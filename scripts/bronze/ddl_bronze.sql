@@ -1,17 +1,5 @@
 --DDL FOR BRONZE LAYER TABLES
---These scripts first check if the datawarehouse database and its tables exists and only creates the tables when it does not already exist to avoid data loss
-
---Run the below query to create a new database call DATAWAREHOUSE
-CREATE DATABASE datawarehouse;
-
---Run the below query to create a schema which will be the bronze layer if it does not exist already
-CREATE SCHEMA IF NOT EXISTS BRONZE;
-
---Run the below query to create a schema which will be the bronze layer if it does not exist already
-CREATE SCHEMA IF NOT EXISTS SILVER;
-
---Run the below query to create a schema which will be the bronze layer if it does not exist already
-CREATE SCHEMA IF NOT EXISTS GOLD;
+--These scripts first check if the tables exists and only creates the tables when it does not already exist to avoid data loss
 
 --CRM_CUST_INFO
 create table IF NOT EXISTS datawarehouse.BRONZE.CRM_CUST_INFO
