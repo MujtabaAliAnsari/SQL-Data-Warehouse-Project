@@ -1,8 +1,20 @@
 --DDL FOR BRONZE LAYER TABLES
---These scripts first check if the table exists and only creates the table when it does not already exist to avoid data loss
+--These scripts first check if the datawarehouse database and its tables exists and only creates the tables when it does not already exist to avoid data loss
+
+--Run the below query to create a new database call DATAWAREHOUSE
+CREATE DATABASE datawarehouse;
+
+--Run the below query to create a schema which will be the bronze layer if it does not exist already
+CREATE SCHEMA IF NOT EXISTS BRONZE;
+
+--Run the below query to create a schema which will be the bronze layer if it does not exist already
+CREATE SCHEMA IF NOT EXISTS SILVER;
+
+--Run the below query to create a schema which will be the bronze layer if it does not exist already
+CREATE SCHEMA IF NOT EXISTS GOLD;
 
 --CRM_CUST_INFO
-create table IF NOT EXISTS CRM_CUST_INFO
+create table IF NOT EXISTS datawarehouse.BRONZE.CRM_CUST_INFO
 (
     cst_id	Int	,
     cst_key	varchar	,
@@ -14,7 +26,7 @@ create table IF NOT EXISTS CRM_CUST_INFO
 );
 
 --CRM_PRD_INFO
-create table IF NOT EXISTS CRM_PRD_INFO
+create table IF NOT EXISTS datawarehouse.BRONZE.CRM_PRD_INFO
 (
     prd_id       Int,
     prd_key      varchar,
@@ -26,7 +38,7 @@ create table IF NOT EXISTS CRM_PRD_INFO
 );
 
 --CRM_SALES_DETAILS
-create table IF NOT EXISTS CRM_SALES_DETAILS
+create table IF NOT EXISTS datawarehouse.BRONZE.CRM_SALES_DETAILS
 (
     sls_ord_num	varchar	,
     sls_prd_key	varchar	,
@@ -40,7 +52,7 @@ create table IF NOT EXISTS CRM_SALES_DETAILS
 );
 
 --ERP_CUST_AZ12
-create table IF NOT EXISTS ERP_CUST_AZ12
+create table IF NOT EXISTS datawarehouse.BRONZE.ERP_CUST_AZ12
 (
     CID	varchar	,
     BDATE	date	,
@@ -48,14 +60,14 @@ create table IF NOT EXISTS ERP_CUST_AZ12
 );
 
 --ERP_LOC_A101
-create table IF NOT EXISTS ERP_LOC_A101
+create table IF NOT EXISTS datawarehouse.BRONZE.ERP_LOC_A101
 (
     CID varchar,
     CNTRY text
 );
 
 --ERP_PX_CAT_G1V2
-CREATE TABLE IF NOT EXISTS ERP_PX_CAT_G1V2
+CREATE TABLE IF NOT EXISTS datawarehouse.BRONZE.ERP_PX_CAT_G1V2
 (
     ID TEXT,
     CAT TEXT,
